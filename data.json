@@ -2,14 +2,14 @@
   {
     "nombre": "Roberto",
     "parentesco": "Papá",
-    "fecha": "05-15",
+    "fecha": "01-11",
     "interes": "Construcción y herramientas",
     "color": "#2E86C1"
   },
   {
     "nombre": "Mirian",
     "parentesco": "Mamá",
-    "fecha": "08-20",
+    "fecha": "02-01",
     "interes": "Artesanías y manualidades",
     "color": "#C70039"
   },
@@ -17,6 +17,20 @@
     "nombre": "Oscar",
     "parentesco": "Yo",
     "fecha": "07-07",
+    "interes": "Software y Gaming",
+    "color": "#28B463"
+  },
+  {
+    "nombre": "Shantico",
+    "parentesco": "Yo",
+    "fecha": "25-05",
+    "interes": "Software y Gaming",
+    "color": "#28B463"
+  },
+  {
+    "nombre": "Mary",
+    "parentesco": "Yo",
+    "fecha": "12-10",
     "interes": "Software y Gaming",
     "color": "#28B463"
   }
