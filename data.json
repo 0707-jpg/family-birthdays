@@ -40,5 +40,12 @@
     "fecha": "07-30",
     "interes": "Bob el constructor",
     "color": "#28B463"
+  },
+  {
+    "nombre": "Jimmy",
+    "parentesco": "Tìo",
+    "fecha": "03-21",
+    "interes": "guitar la tocarra",
+    "color": "#28B463"
   }
 ]
