@@ -1,7 +1,6 @@
 [
   {
     "nombre": "Roberto",
-    "parentesco": "Papá",
     "fecha": "11-01",
     "foto": "img/roberto.jpeg",
     "interes": "Construcción y herramientas",
@@ -9,7 +8,6 @@
   },
   {
     "nombre": "Mirian",
-    "parentesco": "Mamá",
     "fecha": "01-02",
     "foto": "img/mirian.jpeg",
     "interes": "Artesanías y manualidades",
@@ -17,7 +15,6 @@
   },
   {
     "nombre": "Oscar",
-    "parentesco": "Chano",
     "fecha": "07-07",
     "foto": "img/oscar.jpeg",
     "interes": "Software y Gaming",
@@ -33,7 +30,6 @@
   },
   {
     "nombre": "Mary",
-    "parentesco": "Mamita",
     "fecha": "10-12",
     "foto": "img/mamita.jpeg",
     "interes": "Pollo a la brasa",
@@ -41,7 +37,6 @@
   },
    {
     "nombre": "Leo",
-    "parentesco": "Tìo",
     "fecha": "07-30",
     "foto": "img/Leo.jpeg",
     "interes": "Bob el constructor",
@@ -49,7 +44,6 @@
   },
   {
     "nombre": "Jimmy",
-    "parentesco": "Tìo",
     "fecha": "03-21",
     "foto": "img/jimmy.jpeg",
     "interes": "guitar la tocarra",
