@@ -14,15 +14,12 @@
             border: 1px solid rgba(255,255,255,0.1); 
         }
         .foto-perfil {
-            width: 75px;
-            height: 75px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid;
             transition: all 0.3s ease;
-        }
-        .card:hover .foto-perfil {
-            transform: scale(1.1);
         }
     </style>
 </head>
@@ -31,10 +28,10 @@
         <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Próximos Cumpleaños 🎈
         </h1>
-        <p class="text-gray-400 mt-2">Puerto Maldonado - UNAMAD 2026</p>
+        <p class="text-gray-400 mt-2">Sincronizado con la base de datos de Oscar</p>
     </header>
 
-    <div id="cumple-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="cumple-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         </div>
 
     <script>
@@ -59,27 +56,30 @@
                     const esHoy = diff === 0 || (diff === -0);
 
                     container.innerHTML += `
-                        <div class="card p-6 rounded-2xl transform transition hover:scale-105">
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center gap-5">
-                                    <img src="${persona.foto}" 
-                                         alt="${persona.nombre}" 
-                                         class="foto-perfil"
-                                         style="border-color: ${persona.color}"
-                                         onerror="this.src='https://ui-avatars.com/api/?name=${persona.nombre}&background=random'">
-                                    
-                                    <h2 class="text-3xl font-black tracking-tight">${persona.nombre}</h2>
-                                </div>
-                                <span class="text-4xl">${esHoy ? '🎂' : '🎁'}</span>
+                        <div class="card p-8 rounded-3xl transform transition hover:scale-105 flex flex-col items-center text-center">
+                            
+                            <div class="mb-4">
+                                <img src="${persona.foto}" 
+                                     alt="${persona.nombre}" 
+                                     class="foto-perfil mx-auto"
+                                     style="border-color: ${persona.color}"
+                                     onerror="this.src='https://ui-avatars.com/api/?name=${persona.nombre}&background=random'">
+                                <h2 class="text-3xl font-black mt-3 tracking-tight">${persona.nombre}</h2>
                             </div>
 
-                            <p class="mt-4 text-gray-400 text-sm font-medium">✨ Le gusta: ${persona.interes}</p>
+                            <p class="text-gray-400 text-sm italic mb-6">✨ Le gusta: ${persona.interes}</p>
 
-                            <div class="mt-6 flex items-baseline gap-2">
-                                <span class="text-6xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}">
+                            <div class="flex flex-col items-center justify-center bg-white/5 w-full py-4 rounded-2xl">
+                                <span class="text-7xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}">
                                     ${esHoy ? '¡HOY!' : diff}
                                 </span>
-                                <span class="text-gray-500 font-bold text-lg uppercase">${esHoy ? '' : 'días'}</span>
+                                <span class="text-gray-500 font-bold text-sm uppercase tracking-widest mt-1">
+                                    ${esHoy ? 'ES EL DÍA' : 'días faltantes'}
+                                </span>
+                            </div>
+
+                            <div class="mt-4 opacity-30 text-2xl">
+                                ${esHoy ? '🎂' : '🎁'}
                             </div>
                         </div>
                     `;
