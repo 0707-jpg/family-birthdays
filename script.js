@@ -30,3 +30,9 @@ async function cargarCumples() {
 
 // Ejecutar al cargar la página
 window.onload = cargarCumples;
+// Busca esta parte en tu script.js y agrega el console.log
+datos.forEach(persona => {
+    console.log("Intentando cargar:", persona.foto); // <-- Agrega esto para ver la ruta en F12
+    const card = document.createElement('div');
+    // ... resto del código
+});
