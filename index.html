@@ -14,11 +14,15 @@
             border: 1px solid rgba(255,255,255,0.1); 
         }
         .foto-perfil {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255,255,255,0.2);
+            border: 4px solid;
+            transition: all 0.3s ease;
+        }
+        .card:hover .foto-perfil {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -27,7 +31,7 @@
         <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Próximos Cumpleaños 🎈
         </h1>
-        <p class="text-gray-400 mt-2">Sincronizado con la base de datos de Oscar</p>
+        <p class="text-gray-400 mt-2">Puerto Maldonado - UNAMAD 2026</p>
     </header>
 
     <div id="cumple-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -36,7 +40,6 @@
     <script>
         async function cargarCumples() {
             try {
-                // Forzamos la actualización para evitar el caché de GitHub
                 const res = await fetch('data.json?v=' + Date.now());
                 const data = await res.json();
                 const container = document.getElementById('cumple-container');
@@ -58,28 +61,25 @@
                     container.innerHTML += `
                         <div class="card p-6 rounded-2xl transform transition hover:scale-105">
                             <div class="flex justify-between items-center">
-                                <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-5">
                                     <img src="${persona.foto}" 
                                          alt="${persona.nombre}" 
                                          class="foto-perfil"
                                          style="border-color: ${persona.color}"
                                          onerror="this.src='https://ui-avatars.com/api/?name=${persona.nombre}&background=random'">
                                     
-                                    <div>
-                                        <h2 class="text-2xl font-bold">${persona.nombre}</h2>
-                                        <span class="text-xs text-gray-400 tracking-widest uppercase">Integrante</span>
-                                    </div>
+                                    <h2 class="text-3xl font-black tracking-tight">${persona.nombre}</h2>
                                 </div>
-                                <span class="text-3xl">${esHoy ? '🎂' : '🎁'}</span>
+                                <span class="text-4xl">${esHoy ? '🎂' : '🎁'}</span>
                             </div>
 
-                            <p class="mt-4 text-gray-300 italic text-sm">"Le gusta: ${persona.interes}"</p>
+                            <p class="mt-4 text-gray-400 text-sm font-medium">✨ Le gusta: ${persona.interes}</p>
 
-                            <div class="mt-6 flex items-baseline">
-                                <span class="text-5xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}">
+                            <div class="mt-6 flex items-baseline gap-2">
+                                <span class="text-6xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}">
                                     ${esHoy ? '¡HOY!' : diff}
                                 </span>
-                                <span class="text-gray-400 ml-2 text-sm">${esHoy ? '' : 'días faltantes'}</span>
+                                <span class="text-gray-500 font-bold text-lg uppercase">${esHoy ? '' : 'días'}</span>
                             </div>
                         </div>
                     `;
