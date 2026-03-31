@@ -1,23 +1,23 @@
-[
+  [
   {
     "nombre": "Roberto",
     "fecha": "11-01",
     "foto": "img/roberto.jpeg",
-    "interes": "Construcción y herramientas",
+    "frase": "sicoazocito",
     "color": "#2E86C1"
   },
   {
     "nombre": "Mirian",
     "fecha": "01-02",
     "foto": "img/mirian.jpeg",
-    "interes": "Artesanías y manualidades",
+    "frase": "Artesanías y manualidades",
     "color": "#C70039"
   },
   {
     "nombre": "Oscar",
     "fecha": "07-07",
     "foto": "img/oscar.jpeg",
-    "interes": "Software y Gaming",
+    "frase": "5 minutitos más",
     "color": "#28B463"
   },
   {
@@ -25,28 +25,35 @@
     "parentesco": "Papito",
     "fecha": "05-25",
     "foto": "img/shantico.jpeg",
-    "interes": "Carpinteria",
+    "frase": "Un tos que",
     "color": "#28B463"
   },
   {
     "nombre": "Mary",
     "fecha": "10-12",
     "foto": "img/mamita.jpeg",
-    "interes": "Pollo a la brasa",
+    "frase": "Pollo a la brasa",
     "color": "#28B463"
   },
    {
     "nombre": "Leo",
     "fecha": "07-30",
     "foto": "img/leo.jpeg",
-    "interes": "Bob el constructor",
+    "frase": "Apalolo",
     "color": "#28B463"
   },
   {
     "nombre": "Jimmy",
     "fecha": "03-21",
     "foto": "img/jimmy.jpeg",
-    "interes": "guitar la tocarra",
+    "frase": "guitar la tocarra",
+    "color": "#28B463"
+  },
+  {
+    "nombre": "Rocío",
+    "fecha": "04-05",
+    "foto": "img/rocio.jpeg",
+    "frase": "",
     "color": "#28B463"
   }
 ]
