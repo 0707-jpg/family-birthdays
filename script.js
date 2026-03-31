@@ -19,7 +19,7 @@ async function cargarCumples() {
                 <h3>${persona.nombre}</h3>
                 <p>${persona.parentesco}</p>
                 <span class="fecha">🎂 ${persona.fecha}</span>
-                <small>Interés: ${persona.frase}</small>
+                <small>Interés: ${persona.interes}</small>
             `;
             contenedor.appendChild(tarjeta);
         });
