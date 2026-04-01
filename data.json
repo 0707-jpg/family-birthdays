@@ -26,55 +26,62 @@
     "fecha": "05-25",
     "foto": "img/shantico.jpeg",
     "frase": "Un tos que",
-    "color": "#28B463"
+    "color": "f5f5dc"
   },
   {
     "nombre": "Mary",
     "fecha": "10-12",
     "foto": "img/mamita.jpeg",
     "frase": "Pollo a la brasa",
-    "color": "#28B463"
+    "color": "#000000"
   },
    {
     "nombre": "Leo",
     "fecha": "07-30",
     "foto": "img/leo.jpeg",
     "frase": "Apalolo",
-    "color": "#28B463"
+    "color": "#0000ff"
   },
   {
     "nombre": "Jimmy",
     "fecha": "03-21",
     "foto": "img/jimmy.jpeg",
     "frase": "guitar la tocarra",
-    "color": "#28B463"
+    "color": "#7fff00"
   },
   {
     "nombre": "Rocío",
     "fecha": "04-05",
     "foto": "img/rocio.jpg",
     "frase": "",
-    "color": "#28B463"
+    "color": "#ff7f50"
   },
   {
     "nombre": "Ada",
     "fecha": "08-07",
     "foto": "img/ada.jpeg",
     "frase": "",
-    "color": "#28B463"
+    "color": "#00ffff"
   },
   {
     "nombre": "Irayda",
     "fecha": "05-10",
     "foto": "img/irayda.jpeg",
     "frase": "",
-    "color": "#28B463"
+    "color": "#00008b"
   },
   {
     "nombre": "Marcos",
     "fecha": "05-14",
     "foto": "img/marcos.jpeg",
     "frase": "¡Ven limpame mi tulo!",
-    "color": "#28B463"
+    "color": "#9932cc"
+  },
+  {
+    "nombre": "Aarón",
+    "fecha": "05-14",
+    "foto": "img/aaron.jpeg",
+    "frase": "",
+    "color": "#2f4f4f"
   }
 ]
