@@ -1,40 +1,110 @@
+/* --- Estilos Generales --- */
 body {
     background-color: #1a1a1a;
     color: white;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
+    line-height: 1.6;
 }
 
+/* --- Contenedor Principal --- */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    /* Ajustado el minmax para que las tarjetas no se vean apretadas con fotos grandes */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* --- Tarjeta Individual (Dinámica) --- */
 .card {
     background: #2d2d2d;
-    border-radius: 15px;
-    padding: 20px;
-    transition: transform 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 30px 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    background: #363636;
 }
 
+/* --- Foto de Perfil (Más Grande) --- */
 .foto-perfil {
-    width: 120px;
-    height: 120px;
+    width: 180px;         /* Tamaño aumentado */
+    height: 180px;        /* Tamaño aumentado */
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 4px solid; /* El color se asignará por JS */
+    margin-bottom: 20px;
+    border: 5px solid;    /* Borde un poco más grueso */
+    transition: transform 0.5s ease;
+    background-color: #444; /* Color de fondo mientras carga */
 }
 
-h3 { margin: 10px 0 5px; }
-p { color: #aaa; margin: 0; }
-.fecha { font-weight: bold; color: #00d4ff; display: block; margin-top: 10px; }
+.card:hover .foto-perfil {
+    transform: rotate(5deg) scale(1.05); /* La foto gira un poco al pasar el mouse */
+}
+
+/* --- Textos --- */
+h3 { 
+    margin: 10px 0 5px; 
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+p { 
+    color: #bbb; 
+    margin: 0 0 10px; 
+    font-style: italic;
+}
+
+.fecha { 
+    font-weight: bold; 
+    color: #00d4ff; 
+    display: block; 
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+small {
+    display: block;
+    margin: 15px 0;
+    color: #888;
+    min-height: 40px; /* Evita que la tarjeta salte si la frase es larga */
+}
+
+/* --- Botón de WhatsApp Dinámico --- */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    transition: filter 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn-whatsapp:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.95);
+}
