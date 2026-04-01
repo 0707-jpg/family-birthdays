@@ -26,14 +26,14 @@
     "fecha": "05-25",
     "foto": "img/shantico.jpeg",
     "frase": "Un tos que",
-    "color": "f5f5dc"
+    "color": "#f5f5dc"
   },
   {
     "nombre": "Mary",
     "fecha": "10-12",
     "foto": "img/mamita.jpeg",
     "frase": "Pollo a la brasa",
-    "color": "#000000"
+    "color": "#333333"
   },
    {
     "nombre": "Leo",

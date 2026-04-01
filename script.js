@@ -12,46 +12,69 @@ async function cargarCumples() {
         datos.forEach(persona => {
             const [mes, dia] = persona.fecha.split('-');
             let proximo = new Date(hoy.getFullYear(), mes - 1, dia);
+            
             if (proximo < hoy && hoy.toDateString() !== proximo.toDateString()) {
                 proximo.setFullYear(hoy.getFullYear() + 1);
             }
+
             const diff = Math.ceil((proximo - hoy) / (1000 * 60 * 60 * 24));
             const esHoy = diff === 0;
 
+            // Validar color (añadir # si falta)
+            let colorHex = persona.color;
+            if (!colorHex.startsWith('#')) {
+                colorHex = '#' + colorHex;
+            }
+
             const tarjeta = document.createElement('div');
-            // Añadimos 'relative' y 'z-10' para que el botón no quede debajo del cristal
-            tarjeta.className = 'card p-8 rounded-3xl transform transition hover:scale-105 flex flex-col items-center text-center relative z-10';
+            tarjeta.className = 'card p-8 rounded-3xl flex flex-col items-center text-center relative mb-4';
 
-            const urlWA = `https://wa.me/?text=${encodeURIComponent('¡Feliz cumple ' + persona.nombre + '!')}`;
-
+            // Construir contenido
             tarjeta.innerHTML = `
                 <div class="mb-4">
                     <img src="${persona.foto}" 
                          class="foto-perfil mx-auto" 
-                         style="border-color: ${persona.color}"
+                         style="border: 5px solid ${colorHex}; width: 180px; height: 180px; border-radius: 50%; object-fit: cover;"
                          onerror="this.src='https://ui-avatars.com/api/?name=${persona.nombre}'">
                     <h2 class="text-3xl font-black mt-3 text-white">${persona.nombre}</h2>
                 </div>
-                
-                <p class="text-gray-400 text-sm italic mb-6">"${persona.frase}"</p>
-                
+                <p class="text-gray-400 text-sm italic mb-6">"${persona.frase || '¡Felicidades!'}"</p>
                 <div class="flex flex-col items-center justify-center bg-white/10 w-full py-6 rounded-2xl mb-6">
-                    <span class="text-7xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}">
+                    <span class="text-7xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}" style="font-size: 4rem;">
                         ${esHoy ? '¡HOY!' : diff}
                     </span>
-                    <span class="text-gray-500 font-bold text-sm uppercase mt-1">
-                        ${esHoy ? 'ES EL DÍA' : 'días faltantes'}
-                    </span>
+                    <p class="text-gray-400 font-bold text-xs uppercase mt-1">Días faltantes</p>
                 </div>
-
-                <a href="${urlWA}" target="_blank" 
-                   class="block w-full py-4 rounded-xl font-bold text-white uppercase text-center"
-                   style="background-color: ${persona.color} !important; display: block !important; min-height: 50px !important; visibility: visible !important; opacity: 1 !important;">
-                   ENVIAR SALUDO 📱
-                </a>
             `;
+
+            // Crear Botón Robusto
+            const btn = document.createElement('a');
+            btn.href = `https://wa.me/?text=${encodeURIComponent('¡Feliz cumple ' + persona.nombre + '! ✨')}`;
+            btn.target = "_blank";
+            btn.innerText = "ENVIAR SALUDO 📱";
+            
+            // Estilos de emergencia para que se vea SÍ O SÍ
+            Object.assign(btn.style, {
+                display: "block",
+                width: "100%",
+                padding: "15px",
+                backgroundColor: colorHex,
+                color: "white",
+                borderRadius: "15px",
+                fontWeight: "bold",
+                textDecoration: "none",
+                marginTop: "10px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.5)",
+                border: colorHex === "#000000" ? "1px solid white" : "none" // Si es negro, le pone borde blanco
+            });
+
+            tarjeta.appendChild(btn);
             contenedor.appendChild(tarjeta);
         });
-    } catch (e) { console.error("Error crítico:", e); }
+
+    } catch (e) {
+        console.error("Error en la carga:", e);
+    }
 }
-window.onload = cargarCumples;
+
+document.addEventListener('DOMContentLoaded', cargarCumples);
