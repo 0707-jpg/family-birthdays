@@ -1,18 +1,17 @@
 /* --- Estilos Generales --- */
 body {
-    background-color: #1a1a1a;
+    background-color: #0f172a; /* Color ajustado al de tu index.html */
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
     line-height: 1.6;
 }
 
-/* --- Contenedor Principal --- */
-.grid-container {
+/* --- Contenedor Principal (Compatible con Tailwind) --- */
+#cumple-container {
     display: grid;
-    /* Ajustado el minmax para que las tarjetas no se vean apretadas con fotos grandes */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 25px;
     padding: 20px;
@@ -20,91 +19,99 @@ body {
     margin: 0 auto;
 }
 
-/* --- Tarjeta Individual (Dinámica) --- */
+/* --- Tarjeta Individual (Efecto Cristal) --- */
 .card {
-    background: #2d2d2d;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05) !important; 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
     padding: 30px 20px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: visible !important; /* Permitir que efectos sobresalgan */
 }
 
 .card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    background: #363636;
+    transform: translateY(-15px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* --- Foto de Perfil (Más Grande) --- */
+/* --- Foto de Perfil --- */
 .foto-perfil {
-    width: 180px;         /* Tamaño aumentado */
-    height: 180px;        /* Tamaño aumentado */
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 5px solid;    /* Borde un poco más grueso */
+    border: 5px solid;
     transition: transform 0.5s ease;
-    background-color: #444; /* Color de fondo mientras carga */
+    background-color: #334155;
 }
 
 .card:hover .foto-perfil {
-    transform: rotate(5deg) scale(1.05); /* La foto gira un poco al pasar el mouse */
+    transform: rotate(5deg) scale(1.05);
 }
 
-/* --- Textos --- */
-h3 { 
+/* --- Textos y Tipografía --- */
+h2, h3 { 
     margin: 10px 0 5px; 
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
+    font-size: 1.8rem;
+    font-weight: 900;
 }
 
 p { 
-    color: #bbb; 
+    color: #94a3b8; 
     margin: 0 0 10px; 
     font-style: italic;
+    font-size: 0.95rem;
 }
 
-.fecha { 
-    font-weight: bold; 
-    color: #00d4ff; 
-    display: block; 
-    margin-top: 10px;
-    font-size: 1.1rem;
+/* --- Contador de Días --- */
+.text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+    font-weight: 900;
 }
 
-small {
-    display: block;
-    margin: 15px 0;
-    color: #888;
-    min-height: 40px; /* Evita que la tarjeta salte si la frase es larga */
-}
-
-/* --- Botón de WhatsApp Dinámico --- */
+/* --- Botón de WhatsApp Forzado --- */
 .btn-whatsapp {
-    display: inline-flex;
+    display: flex !important; /* Forzar visibilidad */
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    border-radius: 50px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-top: 15px;
-    transition: filter 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 220px;
+    padding: 14px 24px;
+    border-radius: 16px;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 50;
 }
 
 .btn-whatsapp:hover {
     filter: brightness(1.2);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
 }
 
-.btn-whatsapp:active {
-    transform: scale(0.95);
+/* --- Animación para Hoy --- */
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 }
