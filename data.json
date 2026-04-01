@@ -52,15 +52,29 @@
   {
     "nombre": "Rocío",
     "fecha": "04-05",
-    "foto": "img/rocio.jpeg",
+    "foto": "img/rocio.jpg",
     "frase": "",
     "color": "#28B463"
   },
   {
     "nombre": "Ada",
-    "fecha": "04-05",
-    "foto": "img/rocio.jpeg",
+    "fecha": "08-07",
+    "foto": "img/ada.jpeg",
     "frase": "",
+    "color": "#28B463"
+  },
+  {
+    "nombre": "Irayda",
+    "fecha": "05-10",
+    "foto": "img/irayda.jpeg",
+    "frase": "",
+    "color": "#28B463"
+  },
+  {
+    "nombre": "Marcos",
+    "fecha": "05-14",
+    "foto": "img/marcos.jpeg",
+    "frase": "¡Ven limpame mi tulo!",
     "color": "#28B463"
   }
 ]
