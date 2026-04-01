@@ -17,9 +17,8 @@ async function cargarCumples() {
                      class="foto-perfil" 
                      style="border-color: ${persona.color}">
                 <h3>${persona.nombre}</h3>
-                <p>${persona.parentesco}</p>
                 <span class="fecha">🎂 ${persona.fecha}</span>
-                <small>Interés: ${persona.interes}</small>
+                <small>frase: ${persona.frase}</small>
             `;
             contenedor.appendChild(tarjeta);
         });
