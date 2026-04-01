@@ -83,5 +83,12 @@
     "foto": "img/aaron.jpeg",
     "frase": "Amamoli",
     "color": "#2f4f4f"
+  },
+   {
+    "nombre": "Éthienne",
+    "fecha": "09-12",
+    "foto": "img/ethienne.jpeg",
+    "frase": "",
+    "color": "#2f4f4f"
   }
 ]
