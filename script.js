@@ -6,75 +6,59 @@ async function cargarCumples() {
         
         if (!contenedor) return;
         contenedor.innerHTML = '';
-
         const hoy = new Date();
 
         datos.forEach(persona => {
+            // Arreglo de color y fechas
+            let colorHex = persona.color.startsWith('#') ? persona.color : '#' + persona.color;
+            if (colorHex === "#000000") colorHex = "#444444";
+
             const [mes, dia] = persona.fecha.split('-');
-            let proximo = new Date(hoy.getFullYear(), mes - 1, dia);
-            
+            let proximo = new Date(hoy.getFullYear(), parseInt(mes) - 1, parseInt(dia));
             if (proximo < hoy && hoy.toDateString() !== proximo.toDateString()) {
                 proximo.setFullYear(hoy.getFullYear() + 1);
             }
-
             const diff = Math.ceil((proximo - hoy) / (1000 * 60 * 60 * 24));
             const esHoy = diff === 0;
 
-            // Validar color (añadir # si falta)
-            let colorHex = persona.color;
-            if (!colorHex.startsWith('#')) {
-                colorHex = '#' + colorHex;
+            // --- NUEVA LÓGICA DE ALERTA ---
+            let textoAlerta = "";
+            if (esHoy) {
+                textoAlerta = `🚨 ¡ALERTA DE CUMPLEAÑOS! 🚨\n\nHoy es el cumpleaños de *${persona.nombre}*. ¡No olvides saludar! 🎂🎈`;
+            } else if (diff <= 7) {
+                textoAlerta = `⚠️ ¡AVISO DE PROXIMIDAD! ⚠️\n\nEl cumpleaños de *${persona.nombre}* es en solo *${diff} días* (${persona.fecha}). ¡Vayan preparando la sorpresa! 🎁✨`;
+            } else {
+                textoAlerta = `Pre-alerta: Falta poco para el cumple de ${persona.nombre}. Es el ${persona.fecha}.`;
             }
 
-            const tarjeta = document.createElement('div');
-            tarjeta.className = 'card p-8 rounded-3xl flex flex-col items-center text-center relative mb-4';
+            const urlWA = `https://wa.me/?text=${encodeURIComponent(textoAlerta)}`;
 
-            // Construir contenido
+            const tarjeta = document.createElement('div');
+            tarjeta.className = 'card p-8 rounded-3xl flex flex-col items-center text-center mb-4 shadow-2xl bg-white/5 backdrop-blur-md border border-white/10';
+            
             tarjeta.innerHTML = `
                 <div class="mb-4">
                     <img src="${persona.foto}" 
-                         class="foto-perfil mx-auto" 
+                         class="mx-auto" 
                          style="border: 5px solid ${colorHex}; width: 180px; height: 180px; border-radius: 50%; object-fit: cover;"
                          onerror="this.src='https://ui-avatars.com/api/?name=${persona.nombre}'">
                     <h2 class="text-3xl font-black mt-3 text-white">${persona.nombre}</h2>
                 </div>
-                <p class="text-gray-400 text-sm italic mb-6">"${persona.frase || '¡Felicidades!'}"</p>
-                <div class="flex flex-col items-center justify-center bg-white/10 w-full py-6 rounded-2xl mb-6">
+                
+                <div class="flex flex-col items-center justify-center bg-white/10 w-full py-6 rounded-2xl mb-8">
                     <span class="text-7xl font-black ${esHoy ? 'text-yellow-400 animate-bounce' : 'text-white'}" style="font-size: 4rem;">
                         ${esHoy ? '¡HOY!' : diff}
                     </span>
-                    <p class="text-gray-400 font-bold text-xs uppercase mt-1">Días faltantes</p>
+                    <span class="text-gray-400 font-bold text-xs uppercase mt-1">Días para el evento</span>
                 </div>
+
+                <a href="${urlWA}" target="_blank" 
+                   style="background-color: ${colorHex}; display: block; width: 100%; padding: 15px; border-radius: 15px; color: white; font-weight: bold; text-decoration: none; text-align: center;">
+                   📢 ENVIAR ALERTA
+                </a>
             `;
-
-            // Crear Botón Robusto
-            const btn = document.createElement('a');
-            btn.href = `https://wa.me/?text=${encodeURIComponent('¡Feliz cumple ' + persona.nombre + '! ✨')}`;
-            btn.target = "_blank";
-            btn.innerText = "ENVIAR SALUDO 📱";
-            
-            // Estilos de emergencia para que se vea SÍ O SÍ
-            Object.assign(btn.style, {
-                display: "block",
-                width: "100%",
-                padding: "15px",
-                backgroundColor: colorHex,
-                color: "white",
-                borderRadius: "15px",
-                fontWeight: "bold",
-                textDecoration: "none",
-                marginTop: "10px",
-                boxShadow: "0 4px 15px rgba(0,0,0,0.5)",
-                border: colorHex === "#000000" ? "1px solid white" : "none" // Si es negro, le pone borde blanco
-            });
-
-            tarjeta.appendChild(btn);
             contenedor.appendChild(tarjeta);
         });
-
-    } catch (e) {
-        console.error("Error en la carga:", e);
-    }
+    } catch (e) { console.error(e); }
 }
-
 document.addEventListener('DOMContentLoaded', cargarCumples);
