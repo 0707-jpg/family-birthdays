@@ -26,7 +26,7 @@ async function cargarCumples() {
             if (esHoy) {
                 textoAlerta = `🚨 ¡ALERTA DE CUMPLEAÑOS! 🚨\n\nHoy es el cumpleaños de *${persona.nombre}*. ¡No olvides saludar! 🎂🎈`;
             } else if (diff <= 7) {
-                textoAlerta = `⚠️ ¡AVISO DE PROXIMIDAD! ⚠️\n\nEl cumpleaños de *${persona.nombre}* es en solo *${diff} días* (${persona.fecha}). ¡Vayan preparando la sorpresa! 🎁✨`;
+                textoAlerta = `⚠️ ¡AVISO DE PROXIMIDAD! ⚠️\n\nEl cumpleaños de *${persona.nombre}* es en solo *${diff} días* (${persona.fecha}). ¡Vayan preparando la sorpresa! `;
             } else {
                 textoAlerta = `Pre-alerta: Falta poco para el cumple de ${persona.nombre}. Es el ${persona.fecha}.`;
             }
@@ -54,7 +54,7 @@ async function cargarCumples() {
 
                 <a href="${urlWA}" target="_blank" 
                    style="background-color: ${colorHex}; display: block; width: 100%; padding: 15px; border-radius: 15px; color: white; font-weight: bold; text-decoration: none; text-align: center;">
-                   📢 ENVIAR ALERTA
+                   📢 ENVIAR SALUDO
                 </a>
             `;
             contenedor.appendChild(tarjeta);
